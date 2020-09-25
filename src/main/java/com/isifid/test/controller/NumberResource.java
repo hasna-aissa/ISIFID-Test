@@ -12,26 +12,19 @@ import com.isifid.test.service.NumberService;
 
 @RestController
 @RequestMapping(path = "/api/number")
-
 public class NumberResource {
 
-	@Autowired
-	private NumberService numberservice;
-	
-	@GetMapping(value = "/calculate/{number}")
-	public ResponseEntity<Integer> calculate(@PathVariable Integer number)
-	{
-		if(number == null)
-		{
-			return ResponseEntity.ok(0);
-		}
-		else if(number < 0)
-		{
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
-		
-		return ResponseEntity.ok(numberservice.calculate(number)) ;
-		
-	}
-	
+  @Autowired private NumberService numberservice;
+
+  @GetMapping(value = "/calculate/{number}")
+  public ResponseEntity<Integer> calculate(@PathVariable Integer number) {
+    if (number == null) {
+      return ResponseEntity.ok(0);
+    } else if (number < 0) {
+      return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    return ResponseEntity.ok(numberservice.calculate(number));
+  }
 }
+
